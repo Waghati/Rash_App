@@ -13,17 +13,16 @@ class HeroSection extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(
-        gradient: AppGradients.heroGradient,
-      ),
+      decoration: BoxDecoration(gradient: AppGradients.heroGradient),
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: isDesktop ? 80 : 20,
           vertical: isDesktop ? 100 : 60,
         ),
-        child: isDesktop
-            ? _buildDesktopLayout(context)
-            : _buildMobileLayout(context),
+        child:
+            isDesktop
+                ? _buildDesktopLayout(context)
+                : _buildMobileLayout(context),
       ),
     );
   }
@@ -32,18 +31,12 @@ class HeroSection extends StatelessWidget {
     return Row(
       children: [
         // Left side - Text content
-        Expanded(
-          flex: 3,
-          child: _buildTextContent(context, isDesktop: true),
-        ),
+        Expanded(flex: 3, child: _buildTextContent(context, isDesktop: true)),
 
         const SizedBox(width: 60),
 
         // Right side - AI Robot illustration
-        Expanded(
-          flex: 2,
-          child: _buildRobotIllustration(),
-        ),
+        Expanded(flex: 2, child: _buildRobotIllustration()),
       ],
     );
   }
@@ -61,7 +54,8 @@ class HeroSection extends StatelessWidget {
 
   Widget _buildTextContent(BuildContext context, {required bool isDesktop}) {
     return Column(
-      crossAxisAlignment: isDesktop ? CrossAxisAlignment.start : CrossAxisAlignment.center,
+      crossAxisAlignment:
+          isDesktop ? CrossAxisAlignment.start : CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         // Main Heading
@@ -112,24 +106,24 @@ class HeroSection extends StatelessWidget {
   }
 
   Widget _buildDesktopButtons(BuildContext context) {
-    return Row(
+    return Wrap(
+      spacing: 16,
+      runSpacing: 16,
       children: [
         _buildUserTypeButton(
           'Student',
           AppColors.primary,
-              () => context.go('${AppConstants.registerRoute}?type=student'),
+          () => context.go('${AppConstants.registerRoute}?type=student'),
         ),
-        const SizedBox(width: 16),
         _buildUserTypeButton(
           'Teacher',
           AppColors.accent,
-              () => context.go('${AppConstants.registerRoute}?type=teacher'),
+          () => context.go('${AppConstants.registerRoute}?type=teacher'),
         ),
-        const SizedBox(width: 16),
         _buildUserTypeButton(
           'Parent',
           AppColors.secondary,
-              () => context.go('${AppConstants.registerRoute}?type=parent'),
+          () => context.go('${AppConstants.registerRoute}?type=parent'),
         ),
       ],
     );
@@ -143,7 +137,7 @@ class HeroSection extends StatelessWidget {
           child: _buildUserTypeButton(
             'Student',
             AppColors.primary,
-                () => context.go('${AppConstants.registerRoute}?type=student'),
+            () => context.go('${AppConstants.registerRoute}?type=student'),
             fullWidth: true,
           ),
         ),
@@ -153,7 +147,7 @@ class HeroSection extends StatelessWidget {
           child: _buildUserTypeButton(
             'Teacher',
             AppColors.accent,
-                () => context.go('${AppConstants.registerRoute}?type=teacher'),
+            () => context.go('${AppConstants.registerRoute}?type=teacher'),
             fullWidth: true,
           ),
         ),
@@ -163,7 +157,7 @@ class HeroSection extends StatelessWidget {
           child: _buildUserTypeButton(
             'Parent',
             AppColors.secondary,
-                () => context.go('${AppConstants.registerRoute}?type=parent'),
+            () => context.go('${AppConstants.registerRoute}?type=parent'),
             fullWidth: true,
           ),
         ),
@@ -172,11 +166,11 @@ class HeroSection extends StatelessWidget {
   }
 
   Widget _buildUserTypeButton(
-      String title,
-      Color color,
-      VoidCallback onPressed, {
-        bool fullWidth = false,
-      }) {
+    String title,
+    Color color,
+    VoidCallback onPressed, {
+    bool fullWidth = false,
+  }) {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
@@ -186,17 +180,12 @@ class HeroSection extends StatelessWidget {
           horizontal: fullWidth ? 24 : 32,
           vertical: 16,
         ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         elevation: 2,
       ),
       child: Text(
         title,
-        style: const TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
-        ),
+        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
       ),
     );
   }
@@ -204,9 +193,7 @@ class HeroSection extends StatelessWidget {
   Widget _buildRobotIllustration() {
     return Container(
       height: 400,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-      ),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
       child: Stack(
         alignment: Alignment.center,
         children: [
@@ -315,11 +302,7 @@ class HeroSection extends StatelessWidget {
         color: color.withOpacity(0.2),
         borderRadius: BorderRadius.circular(8),
       ),
-      child: Icon(
-        icon,
-        color: color,
-        size: 20,
-      ),
+      child: Icon(icon, color: color, size: 20),
     );
   }
 }
